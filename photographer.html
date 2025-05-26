@@ -30,11 +30,16 @@
         <img src="" alt="" class="photograph-header__picture" />
       </div>
       <div class="custom-select-context row mx-2 mt-1">
-        <label id="select-label" for="select-input" tabindex="0"
-          >Trier par</label
-        >
+        <label id="select-label" tabindex="0">Trier par</label>
         <div class="custom-select">
-          <span class="active-option" tabindex="0" data-value="popularity">
+          <span
+            class="active-option"
+            tabindex="0"
+            data-value="popularity"
+            role="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
             <span>Popularité</span>
             <img src="/assets/icons/arrow.svg" alt="flèche"
           /></span>
@@ -43,10 +48,10 @@
             id="select-input"
             role="listbox"
             aria-labelledby="select-label"
-            tabindex="0"
             aria-activedescendant="option-1"
           >
             <li
+              tabindex="0"
               id="option-1"
               role="option"
               aria-selected="true"
@@ -58,6 +63,7 @@
               Popularité
             </li>
             <li
+              tabindex="0"
               id="option-2"
               role="option"
               aria-selected="false"
@@ -69,6 +75,7 @@
               Date
             </li>
             <li
+              tabindex="0"
               id="option-3"
               role="option"
               aria-selected="false"

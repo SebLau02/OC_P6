@@ -28,6 +28,9 @@ const handleSelectOption = (e, activeOption) => {
   });
   e.target.dataset.selected = true;
   e.target.setAttribute("aria-selected", "true");
+
+  const optionsContainer = activeOption.nextElementSibling;
+  optionsContainer.setAttribute("aria-activedescendant", e.target.id);
 };
 
 let closeHandler;
@@ -42,6 +45,10 @@ const handleOpenSelect = (e, activeOption) => {
   const optionsContainer = selectContext.querySelector(".options"); // conteneur des options
   optionsContainer.classList.toggle("open"); // toggle les options
   activeOption.classList.toggle("open"); // ajoute une classe pour du style
+  activeOption.setAttribute(
+    "aria-expanded",
+    optionsContainer.classList.contains("open")
+  );
 
   // permet de fermet les options si on clique ailleurs que le sélect
   closeHandler = () => handleCloseSelect(optionsContainer, activeOption);

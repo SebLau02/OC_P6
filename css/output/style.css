@@ -610,6 +610,7 @@ form input {
 .custom-select-context .custom-select .active-option {
   border-radius: 5px;
   cursor: pointer;
+  height: 70px;
 }
 .custom-select-context .custom-select .active-option.open {
   border-bottom-right-radius: 0;
@@ -627,9 +628,9 @@ form input {
   font-size: 18px;
   font-weight: 700;
   color: white;
+  height: 56.6666666667px;
   padding: 0 1rem;
   width: calc(170px - 2rem);
-  height: 70px;
   border: none;
 }
 

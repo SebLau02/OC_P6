@@ -1,0 +1,11 @@
+@mixin media-query($size) {
+  @if $size == "lg" {
+    @media (min-width: 1023px) {
+      @content;
+    }
+  } @else if $size == "md" {
+    @media (min-width: 767px) {
+      @content;
+    }
+  }
+}

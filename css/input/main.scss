@@ -1,0 +1,9 @@
+@charset 'utf-8';
+@use "./abstracts/_variables" as *;
+@use "./vendor/__vendor-dir";
+@use "./abstracts/__abstracts-dir";
+@use "./base/__base-dir";
+@use "./components/__components-dir";
+@use "./layouts/__layout-dir";
+
+// npx sass --watch styles/input/main.scss styles/output/style.css

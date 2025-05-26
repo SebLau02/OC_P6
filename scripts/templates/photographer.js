@@ -1,12 +1,12 @@
 function photographerTemplate(data) {
-  const { name, portrait, city, price, country, tagline } = data;
+  const { name, portrait, city, price, country, tagline, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
     const link = document.createElement("a");
-    link.setAttribute("href", "photographer.html");
+    link.setAttribute("href", `photographer.html?id=${id}`);
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);

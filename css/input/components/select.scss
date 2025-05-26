@@ -1,0 +1,89 @@
+@use "../abstracts/variables" as *;
+
+.custom-select-context {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: fit-content;
+
+  &.row {
+    flex-direction: row;
+  }
+  label {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .custom-select {
+    position: relative;
+    .options {
+      position: absolute;
+      display: none;
+      :last-child {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      &.open {
+        display: block;
+      }
+      .option {
+        position: relative;
+        cursor: pointer;
+        &:hover::after {
+          opacity: 0.1;
+        }
+        &::after,
+        &::before {
+          position: absolute;
+          top: 0;
+          content: "";
+          display: block;
+        }
+        &::after {
+          background-color: $white;
+          opacity: 0;
+          height: 100%;
+          width: 100%;
+          left: 0;
+        }
+
+        &:before {
+          background-color: $white;
+          height: 1px;
+          width: 90%;
+          translate: -50% -50%;
+          left: 50%;
+        }
+      }
+      .option[data-selected="true"] {
+        display: none;
+      }
+    }
+    .active-option {
+      border-radius: 5px;
+      cursor: pointer;
+
+      &.open {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        > img {
+          rotate: 180deg;
+        }
+      }
+    }
+    .active-option,
+    .option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: $dark;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      padding: 0 1rem;
+      width: calc(170px - 2rem);
+      height: 70px;
+      border: none;
+    }
+  }
+}

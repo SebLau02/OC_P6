@@ -580,6 +580,7 @@ form input {
 .custom-select-context .custom-select .options .option {
   position: relative;
   cursor: pointer;
+  outline-offset: -3px;
 }
 .custom-select-context .custom-select .options .option:hover::after {
   opacity: 0.1;
@@ -611,6 +612,7 @@ form input {
   border-radius: 5px;
   cursor: pointer;
   height: 70px;
+  outline-offset: -3px;
 }
 .custom-select-context .custom-select .active-option.open {
   border-bottom-right-radius: 0;

@@ -28,6 +28,7 @@
       .option {
         position: relative;
         cursor: pointer;
+        outline-offset: -3px;
 
         &:hover::after {
           opacity: 0.1;
@@ -63,6 +64,7 @@
       border-radius: 5px;
       cursor: pointer;
       height: 70px;
+      outline-offset: -3px;
 
       &.open {
         border-bottom-right-radius: 0;

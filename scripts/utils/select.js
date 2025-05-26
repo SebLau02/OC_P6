@@ -64,9 +64,15 @@ if (selectContext) {
   selectLabel.addEventListener("click", (e) =>
     handleOpenSelect(e, activeOption)
   );
+  selectLabel.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") handleOpenSelect(e, activeOption);
+  });
   activeOption.addEventListener("click", (e) =>
     handleOpenSelect(e, activeOption)
   );
+  activeOption.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") handleOpenSelect(e, activeOption);
+  });
 
   const options = selectContext.querySelectorAll(".option");
   options.forEach((option) => {

@@ -39,19 +39,6 @@
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.bg-grey-1 {
-  background-color: $grey-1;
-}
-.bg-grey-light {
-  background-color: $grey-light;
-}
-.bg-grey {
-  background-color: $grey;
-
-  & * {
-    color: $light;
-  }
-}
 .hidden {
   opacity: 0;
 }

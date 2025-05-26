@@ -18,10 +18,9 @@
     .options {
       position: absolute;
       display: none;
-      :last-child {
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
-      }
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      overflow: hidden;
       &.open {
         display: block;
       }

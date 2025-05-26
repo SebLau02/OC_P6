@@ -570,10 +570,9 @@ form input {
 .custom-select-context .custom-select .options {
   position: absolute;
   display: none;
-}
-.custom-select-context .custom-select .options :last-child {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  overflow: hidden;
 }
 .custom-select-context .custom-select .options.open {
   display: block;

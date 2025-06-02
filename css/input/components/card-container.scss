@@ -1,14 +1,18 @@
+@use "../abstracts/variables" as *;
+
 #card-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
 
   article {
     max-width: 350px;
     min-width: 280px;
     width: 100%;
+    margin-bottom: 2rem;
 
     img {
       object-fit: cover;
@@ -26,12 +30,15 @@
       justify-content: space-between;
       align-items: center;
       margin-top: 0.5rem;
+      font-size: 24px;
+      color: $dark;
 
       :last-child {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 0.3rem;
+        font-weight: 500;
 
         img {
           width: 18px;

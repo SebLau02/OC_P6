@@ -13,11 +13,21 @@
   margin: 0 100px;
   padding: 0 50px;
 
-  img {
-    border-radius: 50%;
+  div.photograph-header__container {
+    position: relative;
     height: 200px;
     width: 200px;
-    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+      position: absolute;
+      top: -50px;
+      left: -162px;
+      width: 526px;
+      height: 358px;
+      object-fit: contain;
+    }
   }
 
   > div {

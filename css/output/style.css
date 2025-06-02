@@ -527,25 +527,34 @@ form input {
   margin-bottom: 0;
   text-align: center;
 }
-.photographer_section article a img {
+.photographer_section article a div {
+  position: relative;
   height: 200px;
   width: 200px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 50%;
 }
-.photographer_section article div :first-child {
+.photographer_section article a div img {
+  position: absolute;
+  top: -50px;
+  left: -162px;
+  width: 526px;
+  height: 358px;
+  object-fit: contain;
+}
+.photographer_section article > div :first-child {
   color: rgb(144, 28, 28);
   font-size: 13px;
 }
-.photographer_section article div :nth-child(2) {
+.photographer_section article > div :nth-child(2) {
   color: rgb(0, 0, 0);
   font-size: 10px;
 }
-.photographer_section article div :last-child {
+.photographer_section article > div :last-child {
   color: rgb(117, 117, 117);
   font-size: 9px;
 }
-.photographer_section article div p {
+.photographer_section article > div p {
   margin: 0;
   text-align: center;
   line-height: 1.7;

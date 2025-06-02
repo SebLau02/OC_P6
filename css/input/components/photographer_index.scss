@@ -18,14 +18,25 @@
         margin-bottom: 0;
         text-align: center;
       }
-      img {
+      div {
+        position: relative;
         height: 200px;
         width: 200px;
-        object-fit: cover;
+        overflow: hidden;
         border-radius: 50%;
+
+        img {
+          position: absolute;
+          top: -50px;
+          left: -162px;
+          // translate: -50% -50%;
+          width: 526px;
+          height: 358px;
+          object-fit: contain;
+        }
       }
     }
-    div {
+    > div {
       :first-child {
         color: $dark;
         font-size: 13px;

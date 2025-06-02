@@ -12,6 +12,9 @@ function photographerTemplate(data) {
     img.setAttribute("src", picture);
     img.loading = "lazy";
     img.alt = name;
+    const imgContainer = document.createElement("div");
+    imgContainer.appendChild(img);
+
     const h2 = document.createElement("h2");
     h2.textContent = name;
 
@@ -29,7 +32,7 @@ function photographerTemplate(data) {
     p.appendChild(description);
     p.appendChild(tjm);
 
-    link.appendChild(img);
+    link.appendChild(imgContainer);
     link.appendChild(h2);
     article.appendChild(link);
     article.appendChild(p);

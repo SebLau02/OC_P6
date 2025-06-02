@@ -398,12 +398,56 @@ ul {
   margin: 0;
 }
 
+html.hidden {
+  overflow: hidden;
+}
+
 * {
   font-family: DM Sans, "sans-serif";
 }
 
 #contact_modal {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: none;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(196, 196, 196, 0.4);
+}
+#contact_modal.active {
+  display: block;
+}
+#contact_modal .modal {
+  border-radius: 5px;
+  background-color: rgb(219, 136, 118);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  max-width: 735px;
+  width: 100%;
+}
+#contact_modal .modal header {
+  width: 100%;
+}
+#contact_modal .modal header > div {
+  display: flex;
+  justify-content: space-between;
+}
+#contact_modal .modal header > div img {
+  cursor: pointer;
+}
+#contact_modal .modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  margin: 0;
 }
 
 .photograph-header {
@@ -463,45 +507,16 @@ ul {
   cursor: pointer;
 }
 
-.modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
 form {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
 }
-
 form label {
   color: #312e2e;
   font-size: 36px;
 }
-
 form div {
   display: flex;
   flex-direction: column;
@@ -509,12 +524,15 @@ form div {
   align-items: self-start;
   margin-bottom: 26px;
 }
-
-form input {
+form input,
+form textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+form textarea {
+  height: 170px;
 }
 
 .photographer_section {
@@ -701,14 +719,14 @@ form input {
   height: 100%;
 }
 
-header {
+header.main-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 90px;
 }
-header h1 {
+header.main-header h1 {
   font-weight: 400;
   font-size: 36px;
   line-height: 100%;

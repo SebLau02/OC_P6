@@ -28,9 +28,7 @@ const displayProfilData = (photographer) => {
   const { name, city, country, tagline, portrait } = photographer;
 
   const photographerContainer = document.querySelector(".photograph-header");
-  const nameBox = photographerContainer.querySelector(
-    ".photograph-header__name"
-  );
+  const nameBox = document.querySelectorAll(".photograph-header__name");
   const localicationBox = photographerContainer.querySelector(
     ".photograph-header__localisation"
   );
@@ -38,7 +36,7 @@ const displayProfilData = (photographer) => {
     ".photograph-header__picture"
   );
   const tagBox = photographerContainer.querySelector(".photograph-header__tag");
-  nameBox.innerText = name;
+  nameBox.forEach((el) => (el.innerText = name));
   localicationBox.innerText = `${city}, ${country}`;
   tagBox.innerText = tagline;
   pictureBox.src = `assets/photographers/${portrait}`;

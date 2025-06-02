@@ -93,14 +93,25 @@
       </div>
       <div id="card-container" class="mt-2"></div>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-modal-title"
+    >
+      <div class="modal" tabindex="-1">
         <header>
-          <div>
-            <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
-          </div>
-          <h2 class="photograph-header__name"></h2>
+          <h1 id="contact-modal-title">
+            Contactez-moi <br />
+            <span class="photograph-header__name"></span>
+          </h1>
+          <button
+            type="button"
+            onclick="closeModal()"
+            aria-label="Fermer la modale"
+          >
+            <img src="assets/icons/close.svg" />
+          </button>
         </header>
         <form>
           <div>

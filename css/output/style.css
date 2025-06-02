@@ -436,15 +436,17 @@ html.hidden {
 }
 #contact_modal .modal header {
   width: 100%;
-}
-#contact_modal .modal header > div {
   display: flex;
   justify-content: space-between;
 }
-#contact_modal .modal header > div img {
-  cursor: pointer;
+#contact_modal .modal header button {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  align-self: flex-start;
 }
-#contact_modal .modal header h2 {
+#contact_modal .modal header h1 {
   font-size: 64px;
   font-weight: normal;
   margin: 0;

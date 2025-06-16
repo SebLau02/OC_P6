@@ -43,9 +43,6 @@ const displayProfilData = (photographer) => {
 };
 
 const createMediaCard = (media) => {
-  if ("video" in media) {
-    console.log(media);
-  }
   const article = document.createElement("article");
   let mediaElement = "";
   if ("image" in media) {

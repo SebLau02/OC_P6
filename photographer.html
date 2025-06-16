@@ -98,6 +98,7 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
+      onclick="closeModal()"
     >
       <div class="modal" tabindex="-1">
         <header>
@@ -115,20 +116,20 @@
         </header>
         <form id="contact-form">
           <div>
-            <label>Prénom</label>
-            <input required type="text" name="firstname" />
+            <label for="firstname">Prénom</label>
+            <input required type="text" name="firstname" id="firstname" />
           </div>
           <div>
-            <label>Nom</label>
-            <input required type="text" name="lastname" />
+            <label for="lastname">Nom</label>
+            <input required type="text" name="lastname" id="lastname" />
           </div>
           <div>
-            <label>Email</label>
-            <input required type="email" name="email" />
+            <label for="email">Email</label>
+            <input required type="email" name="email" id="email" />
           </div>
           <div>
-            <label>Votre message</label>
-            <textarea required name="message" rows="5"></textarea>
+            <label for="message">Votre message</label>
+            <textarea required name="message" id="message" rows="5"></textarea>
           </div>
           <button type="submit" class="contact_button submit-btn">
             Envoyer

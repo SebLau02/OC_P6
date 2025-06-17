@@ -1,20 +1,32 @@
-function displayModal() {
-  const modal = document.getElementById("contact_modal");
+function displayModal(type) {
+  const modalContainer = document.getElementById("modal-container");
   const html = document.querySelector("html");
-  modal.classList.add("active");
+  const formContainer = document.querySelector(".contact-container");
+  const carrousel = document.querySelector("#carrousel");
+
+  modalContainer.classList.add("active");
   html.classList.add("hidden");
-  const dialog = modal.querySelector(".modal");
+  let dialog = null;
+
+  if (type === "contact")
+    dialog = modalContainer.querySelector(".modal.contact-container");
+  if (type === "carrousel") dialog = modalContainer.querySelector("#carrousel");
+
+  dialog.classList.remove("none");
   dialog.focus();
 }
 
 function closeModal() {
-  const modal = document.getElementById("contact_modal");
+  const modal = document.getElementById("modal-container");
   const html = document.querySelector("html");
-  const form = modal.querySelector("form");
+  const formContainer = modal.querySelector(".contact-container");
+  const carrousel = document.querySelector("#carrousel");
 
   modal.classList.remove("active");
   html.classList.remove("hidden");
-  form.classList.remove("confirm-message");
+  formContainer.classList.remove("confirm-message");
+  formContainer.classList.add("none");
+  carrousel.classList.add("none");
 }
 
 let timeout = null;

@@ -1,0 +1,26 @@
+#carrousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 35px;
+  height: 90dvh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  min-width: 280px;
+  width: 80%;
+
+  .image-container {
+    height: 90dvh;
+    width: 80%;
+    img,
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

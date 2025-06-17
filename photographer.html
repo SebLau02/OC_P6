@@ -24,7 +24,7 @@
           <p class="photograph-header__localisation"></p>
           <p class="photograph-header__tag"></p>
         </div>
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" onclick="displayModal('contact')">
           Contactez-moi
         </button>
         <div class="photograph-header__container">
@@ -94,13 +94,12 @@
       <div id="card-container" class="mt-2"></div>
     </main>
     <div
-      id="contact_modal"
+      id="modal-container"
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
-      onclick="closeModal()"
     >
-      <div class="modal" tabindex="-1">
+      <div tabindex="-1" class="modal contact-container none">
         <header>
           <h1 id="contact-modal-title">
             Contactez-moi <br />
@@ -136,9 +135,42 @@
           </button>
         </form>
       </div>
+      <div tabindex="-1" id="carrousel" class="none">
+        <button class="icon-btn" id="prev-chevron">
+          <img
+            src="./assets/icons/chevron-left.svg"
+            alt="chevron: image précédente"
+          />
+        </button>
+        <figure class="image-container">
+          <video controls class="none">
+            <source src="" type="" />
+          </video>
+          <img src="" alt="" />
+          <figcaption></figcaption>
+        </figure>
+        <div class="flex column justify-center h-10">
+          <button
+            class="icon-btn close-carrousel-btn m-b-auto"
+            onclick="closeModal()"
+          >
+            <img
+              src="./assets/icons/close-primary.svg"
+              alt="croix: fermer la modale"
+            />
+          </button>
+          <button class="icon-btn m-b-auto" id="next-chevron">
+            <img
+              src="./assets/icons/chevron-right.svg"
+              alt="chevron: image suivante"
+            />
+          </button>
+        </div>
+      </div>
     </div>
     <script src="/scripts/pages/photographer.js" loading="lazy"></script>
     <script src="/scripts/utils/contactForm.js" loading="lazy"></script>
     <script src="/scripts/utils/select.js" loading="lazy"></script>
+    <script src="/scripts/utils/carrousel.js" loading="lazy"></script>
   </body>
 </html>

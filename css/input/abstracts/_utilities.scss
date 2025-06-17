@@ -31,4 +31,47 @@
     padding-right: #{$i}rem;
     padding-left: #{$i}rem;
   }
+  .h-#{$i} {
+    height: calc(#{$i} * 10%);
+  }
+}
+
+$auto: auto;
+@each $val in $auto {
+  .m-b-auto {
+    margin-bottom: $val;
+  }
+}
+
+.none {
+  display: none !important;
+}
+
+$display: flex, none, block;
+@each $val in $display {
+  .#{$val} {
+    display: $val;
+  }
+}
+$justify: (
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+@each $key, $val in $justify {
+  .justify-#{$key} {
+    justify-content: $val;
+  }
+}
+$align: (center, start, end);
+@each $val in $align {
+  .align-#{$val} {
+    align-items: $val;
+  }
+}
+$align: (column, row);
+@each $val in $align {
+  .#{$val} {
+    flex-direction: $val;
+  }
 }

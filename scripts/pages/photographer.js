@@ -49,6 +49,7 @@ const createMediaCard = (media) => {
     mediaElement = document.createElement("img");
     mediaElement.src = `../../assets/medias/${media.image}`;
     mediaElement.alt = media.title;
+    mediaElement.setAttribute("data-id", media.id);
   }
   if ("video" in media) {
     const source = document.createElement("source");
@@ -57,6 +58,7 @@ const createMediaCard = (media) => {
     mediaElement = document.createElement("video");
     mediaElement.appendChild(source);
     mediaElement.setAttribute("controls", "true");
+    mediaElement.setAttribute("data-id", media.id);
   }
   const div = document.createElement("div");
   const titleBox = document.createElement("span");
@@ -74,6 +76,7 @@ const createMediaCard = (media) => {
 
   article.appendChild(mediaElement);
   article.appendChild(div);
+  article.setAttribute("class", "media");
 
   cardContainer.appendChild(article);
 };
@@ -89,6 +92,7 @@ const init = async () => {
   const { medias } = await getPhotos();
   displayProfilData(photographer);
   displayMedias(medias);
+  carrouselActions(medias);
 };
 
 init();

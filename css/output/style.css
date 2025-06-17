@@ -37,6 +37,10 @@
   padding-left: 1rem;
 }
 
+.h-1 {
+  height: calc(1 * 10%);
+}
+
 .m-2 {
   margin: 2rem;
 }
@@ -73,6 +77,10 @@
 .px-2 {
   padding-right: 2rem;
   padding-left: 2rem;
+}
+
+.h-2 {
+  height: calc(2 * 10%);
 }
 
 .m-3 {
@@ -113,6 +121,10 @@
   padding-left: 3rem;
 }
 
+.h-3 {
+  height: calc(3 * 10%);
+}
+
 .m-4 {
   margin: 4rem;
 }
@@ -149,6 +161,10 @@
 .px-4 {
   padding-right: 4rem;
   padding-left: 4rem;
+}
+
+.h-4 {
+  height: calc(4 * 10%);
 }
 
 .m-5 {
@@ -189,6 +205,10 @@
   padding-left: 5rem;
 }
 
+.h-5 {
+  height: calc(5 * 10%);
+}
+
 .m-6 {
   margin: 6rem;
 }
@@ -225,6 +245,10 @@
 .px-6 {
   padding-right: 6rem;
   padding-left: 6rem;
+}
+
+.h-6 {
+  height: calc(6 * 10%);
 }
 
 .m-7 {
@@ -265,6 +289,10 @@
   padding-left: 7rem;
 }
 
+.h-7 {
+  height: calc(7 * 10%);
+}
+
 .m-8 {
   margin: 8rem;
 }
@@ -301,6 +329,10 @@
 .px-8 {
   padding-right: 8rem;
   padding-left: 8rem;
+}
+
+.h-8 {
+  height: calc(8 * 10%);
 }
 
 .m-9 {
@@ -341,6 +373,10 @@
   padding-left: 9rem;
 }
 
+.h-9 {
+  height: calc(9 * 10%);
+}
+
 .m-10 {
   margin: 10rem;
 }
@@ -379,6 +415,62 @@
   padding-left: 10rem;
 }
 
+.h-10 {
+  height: calc(10 * 10%);
+}
+
+.m-b-auto {
+  margin-bottom: auto;
+}
+
+.none {
+  display: none !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: start;
+}
+
+.align-end {
+  align-items: end;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -407,7 +499,7 @@ html.hidden {
   font-family: DM Sans, "sans-serif";
 }
 
-#contact_modal {
+#modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -416,10 +508,10 @@ html.hidden {
   height: 100dvh;
   background-color: rgba(196, 196, 196, 0.4);
 }
-#contact_modal.active {
+#modal-container.active {
   display: block;
 }
-#contact_modal .modal {
+#modal-container .modal {
   border-radius: 5px;
   background-color: rgb(219, 136, 118);
   display: flex;
@@ -435,28 +527,28 @@ html.hidden {
   max-width: 735px;
   width: 100%;
 }
-#contact_modal .modal header {
+#modal-container .modal header {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-#contact_modal .modal header button {
+#modal-container .modal header button {
   width: fit-content;
   height: fit-content;
   background-color: transparent;
   border: none;
   align-self: flex-start;
 }
-#contact_modal .modal header h1 {
+#modal-container .modal header h1 {
   font-size: 64px;
   font-weight: normal;
   margin: 0;
 }
-#contact_modal .modal form {
+#modal-container .modal form {
   position: relative;
   width: 100%;
 }
-#contact_modal .modal form.confirm-message::after {
+#modal-container .modal form.confirm-message::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -466,7 +558,7 @@ html.hidden {
   z-index: 1;
   background: rgb(219, 136, 118);
 }
-#contact_modal .modal form.confirm-message::before {
+#modal-container .modal form.confirm-message::before {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -477,19 +569,19 @@ html.hidden {
   text-align: center;
   font-size: 36px;
 }
-#contact_modal .modal form label {
+#modal-container .modal form label {
   color: #312e2e;
   font-size: 36px;
 }
-#contact_modal .modal form div {
+#modal-container .modal form div {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: self-start;
   margin-bottom: 26px;
 }
-#contact_modal .modal form input,
-#contact_modal .modal form textarea {
+#modal-container .modal form input,
+#modal-container .modal form textarea {
   width: 100%;
   max-width: 100%;
   height: 68px;
@@ -497,7 +589,7 @@ html.hidden {
   border-radius: 5px;
   box-sizing: border-box;
 }
-#contact_modal .modal form textarea {
+#modal-container .modal form textarea {
   height: 170px;
 }
 
@@ -776,6 +868,38 @@ html.hidden {
 }
 #card-container article > div :last-child img {
   width: 18px;
+  height: 100%;
+}
+
+.icon-btn {
+  border: none;
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+}
+
+#carrousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  height: 90dvh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  min-width: 280px;
+  width: 80%;
+}
+#carrousel .image-container {
+  height: 90dvh;
+  width: 80%;
+}
+#carrousel .image-container img,
+#carrousel .image-container video {
+  object-fit: cover;
+  width: 100%;
   height: 100%;
 }
 

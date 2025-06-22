@@ -18,11 +18,12 @@ function closeModal() {
   const modal = document.getElementById("modal-container");
   const html = document.querySelector("html");
   const formContainer = modal.querySelector(".contact-container");
+  const form = formContainer.querySelector("#contact-form");
   const carrousel = document.querySelector("#carrousel");
 
   modal.classList.remove("active");
   html.classList.remove("hidden");
-  formContainer.classList.remove("confirm-message");
+  form.classList.remove("confirm-message");
   formContainer.classList.add("none");
   carrousel.classList.add("none");
 }

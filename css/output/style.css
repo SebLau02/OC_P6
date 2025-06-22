@@ -976,6 +976,7 @@ html.hidden {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 #carrousel .image-container figcaption {
   color: rgb(144, 28, 28);

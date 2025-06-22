@@ -18,7 +18,15 @@ const getPhotos = async () => {
     const data = await res.json();
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    const medias = data.filter((m) => m.photographerId === parseInt(id));
+
+    const medias = data
+      .filter((m) => m.photographerId === parseInt(id))
+      .sort((a, b) => {
+        const likesA = parseInt(a.likes || "0", 10);
+        const likesB = parseInt(b.likes || "0", 10);
+        return likesB - likesA;
+      });
+
     return { medias };
   } catch (error) {
     return error;
@@ -81,6 +89,9 @@ const createMediaCard = (media) => {
   article.appendChild(mediaElement);
   article.appendChild(div);
   article.setAttribute("class", "media");
+  article.setAttribute("data-date", media.date);
+  article.setAttribute("data-likes", media.likes);
+  article.setAttribute("data-name", media.title);
 
   cardContainer.appendChild(article);
 };

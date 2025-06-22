@@ -7,6 +7,41 @@ const handleCloseSelect = (optionsContainer, activeOption) => {
   html.removeEventListener("click", closeHandler);
 };
 
+const orderByTitle = (a, b) => {
+  const textA = a.dataset.name
+    .trim()
+    .toLowerCase()
+    .replace(/^\d+\s*/, "");
+  const textB = b.dataset.name
+    .trim()
+    .toLowerCase()
+    .replace(/^\d+\s*/, "");
+
+  return textA.localeCompare(textB);
+};
+const orderByDate = (a, b) => {
+  const dateA = new Date(a.dataset.date); // date au format "YYYY-MM-DD"
+  const dateB = new Date(b.dataset.date);
+  return dateB - dateA;
+};
+
+const orderByLike = (a, b) => {
+  const likesA = parseInt(a.dataset.likes || "0", 10);
+  const likesB = parseInt(b.dataset.likes || "0", 10);
+  return likesB - likesA;
+};
+
+const handleOrderMedias = (activeFilter) => {
+  const mediasContainer = document.querySelector("#card-container");
+  const medias = Array.from(mediasContainer.children);
+  const ordered = medias.sort((a, b) => {
+    if (activeFilter === "Titre") return orderByTitle(a, b);
+    if (activeFilter === "Popularité") return orderByLike(a, b);
+    if (activeFilter === "Date") return orderByDate(a, b);
+  });
+
+  ordered.forEach((m) => mediasContainer.appendChild(m));
+};
 /**
  * mettre l'option cliqué en option choisie
  * @param {event} e
@@ -31,6 +66,8 @@ const handleSelectOption = (e, activeOption) => {
 
   const optionsContainer = activeOption.nextElementSibling;
   optionsContainer.setAttribute("aria-activedescendant", e.target.id);
+
+  handleOrderMedias(activeOptionLabel.textContent);
 };
 
 let closeHandler;

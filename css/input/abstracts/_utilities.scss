@@ -25,6 +25,9 @@
     padding-top: #{$i}rem;
     padding-bottom: #{$i}rem;
   }
+  .pt-#{$i} {
+    padding-top: #{$i}rem;
+  }
   .pl-#{$i} {
     padding-left: #{$i}rem;
   }

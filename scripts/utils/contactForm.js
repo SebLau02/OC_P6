@@ -1,8 +1,6 @@
 function displayModal(type) {
   const modalContainer = document.getElementById("modal-container");
   const html = document.querySelector("html");
-  const formContainer = document.querySelector(".contact-container");
-  const carrousel = document.querySelector("#carrousel");
 
   modalContainer.classList.add("active");
   html.classList.add("hidden");

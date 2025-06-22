@@ -79,6 +79,12 @@ $align: (column, row, column-reverse);
     flex-direction: $val;
   }
 }
+$align: (pointer, none);
+@each $val in $align {
+  .#{$val} {
+    cursor: $val;
+  }
+}
 
 .loading {
   position: relative;

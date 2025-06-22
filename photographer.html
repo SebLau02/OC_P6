@@ -112,6 +112,7 @@
             type="button"
             onclick="closeModal()"
             aria-label="Fermer la modale"
+            class="pointer"
           >
             <img src="assets/icons/close.svg" alt="icône croix" />
           </button>
@@ -140,7 +141,7 @@
       </div>
       <div tabindex="-1" id="carrousel" class="none">
         <button
-          class="icon-btn"
+          class="icon-btn pointer"
           id="prev-chevron"
           aria-label="passer à l'image précédente"
         >
@@ -159,7 +160,7 @@
         <div class="flex column-reverse justify-center h-10">
           <button
             tabindex="0"
-            class="icon-btn m-b-auto"
+            class="icon-btn m-b-auto pointer"
             id="next-chevron"
             aria-label="passer à l'image suivante"
           >
@@ -169,7 +170,7 @@
             />
           </button>
           <button
-            class="icon-btn close-carrousel-btn m-b-auto"
+            class="icon-btn close-carrousel-btn m-b-auto pointer"
             onclick="closeModal()"
             aria-label="fermer le carrousel"
           >

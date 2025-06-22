@@ -525,6 +525,14 @@
   flex-direction: column-reverse;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.none {
+  cursor: none;
+}
+
 .loading {
   position: relative;
 }

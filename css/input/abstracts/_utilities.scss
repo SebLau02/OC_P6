@@ -21,6 +21,10 @@
   .p-#{$i} {
     padding: #{$i}rem;
   }
+  .py-#{$i} {
+    padding-top: #{$i}rem;
+    padding-bottom: #{$i}rem;
+  }
   .pl-#{$i} {
     padding-left: #{$i}rem;
   }
@@ -69,7 +73,7 @@ $align: (center, start, end);
     align-items: $val;
   }
 }
-$align: (column, row);
+$align: (column, row, column-reverse);
 @each $val in $align {
   .#{$val} {
     flex-direction: $val;

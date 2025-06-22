@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/output/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -11,7 +11,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header class="py-4">
       <a href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
       </a>
@@ -21,8 +21,8 @@
       <div class="photograph-header">
         <div>
           <h1 class="photograph-header__name"></h1>
-          <p class="photograph-header__localisation"></p>
-          <p class="photograph-header__tag"></p>
+          <h2 class="photograph-header__localisation"></hé>
+          <h2 class="photograph-header__tag"></h2>
         </div>
         <button class="contact_button" onclick="displayModal('contact')">
           Contactez-moi
@@ -110,7 +110,7 @@
             onclick="closeModal()"
             aria-label="Fermer la modale"
           >
-            <img src="assets/icons/close.svg" />
+            <img src="assets/icons/close.svg" alt="icône croix" />
           </button>
         </header>
         <form id="contact-form">
@@ -136,7 +136,11 @@
         </form>
       </div>
       <div tabindex="-1" id="carrousel" class="none">
-        <button class="icon-btn" id="prev-chevron">
+        <button
+          class="icon-btn"
+          id="prev-chevron"
+          aria-label="passer à l'image précédente"
+        >
           <img
             src="./assets/icons/chevron-left.svg"
             alt="chevron: image précédente"
@@ -149,20 +153,26 @@
           <img src="" alt="" />
           <figcaption></figcaption>
         </figure>
-        <div class="flex column justify-center h-10">
+        <div class="flex column-reverse justify-center h-10">
+          <button
+            tabindex="0"
+            class="icon-btn m-b-auto"
+            id="next-chevron"
+            aria-label="passer à l'image suivante"
+          >
+            <img
+              src="./assets/icons/chevron-right.svg"
+              alt="chevron: image suivante"
+            />
+          </button>
           <button
             class="icon-btn close-carrousel-btn m-b-auto"
             onclick="closeModal()"
+            aria-label="fermer le carrousel"
           >
             <img
               src="./assets/icons/close-primary.svg"
               alt="croix: fermer la modale"
-            />
-          </button>
-          <button class="icon-btn m-b-auto" id="next-chevron">
-            <img
-              src="./assets/icons/chevron-right.svg"
-              alt="chevron: image suivante"
             />
           </button>
         </div>

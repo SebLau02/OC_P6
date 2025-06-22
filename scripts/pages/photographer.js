@@ -40,6 +40,7 @@ const displayProfilData = (photographer) => {
   localicationBox.innerText = `${city}, ${country}`;
   tagBox.innerText = tagline;
   pictureBox.src = `assets/photographers/${portrait}`;
+  pictureBox.alt = name;
 };
 
 const createMediaCard = (media) => {

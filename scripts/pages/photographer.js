@@ -27,6 +27,7 @@ const getPhotos = async () => {
 const displayProfilData = (photographer) => {
   const { name, city, country, tagline, portrait } = photographer;
 
+  const profileLoader = document.querySelector(".profile-loader");
   const photographerContainer = document.querySelector(".photograph-header");
   const nameBox = document.querySelectorAll(".photograph-header__name");
   const localicationBox = photographerContainer.querySelector(
@@ -41,6 +42,8 @@ const displayProfilData = (photographer) => {
   tagBox.innerText = tagline;
   pictureBox.src = `assets/photographers/${portrait}`;
   pictureBox.alt = name;
+  profileLoader.classList.add("none");
+  photographerContainer.classList.remove("none");
 };
 
 const createMediaCard = (media) => {
@@ -83,8 +86,11 @@ const createMediaCard = (media) => {
 };
 
 const displayMedias = (medias) => {
-  medias.forEach((media) => {
+  medias.forEach((media, i) => {
     createMediaCard(media);
+    if (i === medias.length - 1) {
+      document.querySelector(".loader").classList.add("none");
+    }
   });
 };
 

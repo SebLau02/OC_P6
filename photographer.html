@@ -18,10 +18,11 @@
     </header>
 
     <main id="main">
-      <div class="photograph-header">
+      <div class="profile-loader loading"></div>
+      <div class="photograph-header none">
         <div>
           <h1 class="photograph-header__name"></h1>
-          <h2 class="photograph-header__localisation"></hé>
+          <h2 class="photograph-header__localisation"></h2>
           <h2 class="photograph-header__tag"></h2>
         </div>
         <button class="contact_button" onclick="displayModal('contact')">
@@ -44,8 +45,8 @@
             aria-expanded="false"
           >
             <span>Popularité</span>
-            <img src="/assets/icons/arrow.svg" alt="flèche"
-          /></span>
+            <img src="/assets/icons/arrow.svg" alt="flèche" />
+          </span>
           <ul
             class="options"
             id="select-input"
@@ -91,8 +92,10 @@
           </ul>
         </div>
       </div>
+      <div class="loader loading"></div>
       <div id="card-container" class="mt-2"></div>
     </main>
+
     <div
       id="modal-container"
       role="dialog"

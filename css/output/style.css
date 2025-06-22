@@ -525,6 +525,45 @@
   flex-direction: column-reverse;
 }
 
+.loading {
+  position: relative;
+}
+.loading::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 3;
+  border: 3px solid transparent;
+  border-top: 3px solid rgb(211, 87, 60);
+  border-bottom: 3px solid rgb(211, 87, 60);
+  border-right: 3px solid rgb(219, 136, 118);
+  border-left: 3px solid rgb(219, 136, 118);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.loading::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -561,6 +600,7 @@ html.hidden {
   width: 100%;
   height: 100dvh;
   background-color: rgba(196, 196, 196, 0.4);
+  z-index: 10;
 }
 #modal-container.active {
   display: block;
@@ -637,11 +677,12 @@ html.hidden {
 #modal-container .modal form input,
 #modal-container .modal form textarea {
   width: 100%;
-  max-width: 100%;
+  max-width: 99%;
   height: 68px;
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 #modal-container .modal form textarea {
   height: 170px;
@@ -706,41 +747,11 @@ html.hidden {
   border-radius: 5px;
   cursor: pointer;
 }
-.contact_button.submit-btn.loading::before {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  z-index: 3;
-  border: 3px solid transparent;
-  border-top: 3px solid rgb(211, 87, 60);
-  border-bottom: 3px solid rgb(211, 87, 60);
-  border-right: 3px solid rgb(219, 136, 118);
-  border-left: 3px solid rgb(219, 136, 118);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.contact_button.submit-btn {
+  margin-left: 0.1rem;
 }
 .contact_button.submit-btn.loading::after {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: rgb(144, 28, 28);
-  z-index: 2;
-  border-radius: 5px;
 }
 
 .photographer_section {
@@ -961,6 +972,11 @@ html.hidden {
 #carrousel .image-container figcaption {
   color: rgb(144, 28, 28);
   font-size: 24px;
+}
+
+.loader,
+.profile-loader {
+  height: 300px;
 }
 
 header.main-header {

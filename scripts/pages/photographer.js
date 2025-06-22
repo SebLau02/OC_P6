@@ -49,7 +49,7 @@ const createMediaCard = (media) => {
   if ("image" in media) {
     mediaElement = document.createElement("img");
     mediaElement.src = `../../assets/medias/${media.image}`;
-    mediaElement.alt = media.title;
+    mediaElement.alt = "";
     mediaElement.setAttribute("data-id", media.id);
   }
   if ("video" in media) {

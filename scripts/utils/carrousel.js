@@ -4,7 +4,6 @@ const currentVideo = carrousel.querySelector(".image-container video");
 const currentImageCaption = carrousel.querySelector(
   ".image-container figcaption"
 );
-let mediasState = null;
 
 const setMedia = (media) => {
   if ("video" in media) {
@@ -83,7 +82,6 @@ const handleLike = (e) => {
 };
 
 const carrouselActions = (medias) => {
-  mediasState = medias;
   const mediasElement = document.querySelectorAll(".media");
 
   mediasElement.forEach((media) => {
@@ -91,8 +89,11 @@ const carrouselActions = (medias) => {
     const likeBtn = media.querySelector(".icon-btn");
 
     mediasImage.addEventListener("click", (e) =>
-      handleOpenCarrousel(e, mediasState)
+      handleOpenCarrousel(e, medias)
     );
+    mediasImage.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleOpenCarrousel(e, medias);
+    });
     likeBtn.addEventListener("click", (e) => handleLike(e));
   });
 };

@@ -27,7 +27,9 @@ function closeModal() {
   formContainer.classList.add("none");
   carrousel.classList.add("none");
 }
-
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
 let timeout = null;
 const handleSubmitContact = (e) => {
   e.preventDefault();

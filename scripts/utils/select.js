@@ -94,8 +94,30 @@ const handleOpenSelect = (e, activeOption) => {
 
 const selectContext = document.querySelector(".custom-select-context");
 const activeOption = selectContext.querySelector(".active-option");
+const focusableSelectors =
+  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+const focusable = selectContext.querySelectorAll(focusableSelectors);
+const first = focusable[0];
+const last = focusable[focusable.length - 1];
+
+const handleFocusTrap = (e) => {
+  if (e.key !== "Tab") return;
+
+  if (e.shiftKey) {
+    if (document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  } else {
+    if (document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+};
 
 if (selectContext) {
+  selectContext.addEventListener("keydown", (e) => handleFocusTrap(e));
   const selectLabel = selectContext.querySelector("label");
 
   selectLabel.addEventListener("click", (e) =>
@@ -116,5 +138,8 @@ if (selectContext) {
     option.addEventListener("click", (e) =>
       handleSelectOption(e, activeOption)
     );
+    option.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleSelectOption(e, activeOption);
+    });
   });
 }

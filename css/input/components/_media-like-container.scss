@@ -1,0 +1,16 @@
+.media-likes-container {
+  button {
+    &.liked {
+      .heart-empty {
+        display: none !important;
+      }
+      .heart-full {
+        display: unset !important;
+      }
+    }
+
+    .heart-full {
+      display: none !important;
+    }
+  }
+}

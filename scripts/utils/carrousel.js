@@ -4,6 +4,7 @@ const currentVideo = carrousel.querySelector(".image-container video");
 const currentImageCaption = carrousel.querySelector(
   ".image-container figcaption"
 );
+let mediasState = null;
 
 const setMedia = (media) => {
   if ("video" in media) {
@@ -67,10 +68,31 @@ const handleOpenCarrousel = (e, medias) => {
   handleClickNextImage(medias);
 };
 
+const handleLike = (e) => {
+  e.target.classList.toggle("liked");
+
+  const likesCount = e.currentTarget.parentNode.querySelector("span");
+  const totalLikes = document.querySelector(".total-likes");
+
+  if (e.target.classList.contains("liked")) {
+    likesCount.innerText = parseInt(likesCount.textContent) + 1;
+    totalLikes.innerText = parseInt(totalLikes.textContent) + 1;
+  } else {
+    likesCount.innerText = parseInt(likesCount.textContent) - 1;
+  }
+};
+
 const carrouselActions = (medias) => {
+  mediasState = medias;
   const mediasElement = document.querySelectorAll(".media");
 
-  mediasElement.forEach((media) =>
-    media.addEventListener("click", (e) => handleOpenCarrousel(e, medias))
-  );
+  mediasElement.forEach((media) => {
+    const mediasImage = media.querySelector("img");
+    const likeBtn = media.querySelector(".icon-btn");
+
+    mediasImage.addEventListener("click", (e) =>
+      handleOpenCarrousel(e, mediasState)
+    );
+    likeBtn.addEventListener("click", (e) => handleLike(e));
+  });
 };

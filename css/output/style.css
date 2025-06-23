@@ -1,4 +1,55 @@
 @charset "UTF-8";
+.m-0 {
+  margin: 0rem;
+}
+
+.mt-0 {
+  margin-top: 0rem;
+}
+
+.mr-0 {
+  margin-right: 0rem;
+}
+
+.ml-0 {
+  margin-left: 0rem;
+}
+
+.mx-0 {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.p-0 {
+  padding: 0rem;
+}
+
+.py-0 {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.pt-0 {
+  padding-top: 0rem;
+}
+
+.pl-0 {
+  padding-left: 0rem;
+}
+
+.pr-0 {
+  padding-right: 0rem;
+}
+
+.px-0 {
+  padding-right: 0rem;
+  padding-left: 0rem;
+}
+
+.h-0 {
+  height: calc(0 * 10%);
+}
+
 .m-1 {
   margin: 1rem;
 }
@@ -573,6 +624,10 @@
   cursor: none;
 }
 
+.event-none {
+  pointer-events: none;
+}
+
 .loading {
   position: relative;
 }
@@ -943,11 +998,12 @@ html.hidden {
 
 #card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   flex-wrap: wrap;
   margin-left: 100px;
   margin-right: 100px;
+  gap: 95px;
 }
 #card-container article {
   max-width: 350px;
@@ -1026,6 +1082,39 @@ html.hidden {
 .loader,
 .profile-loader {
   height: 300px;
+}
+
+.hoverable-container {
+  position: fixed;
+  bottom: 0;
+  right: 4rem;
+  padding-left: 3rem;
+}
+.hoverable-container .likes-pricing {
+  width: 376px;
+  padding: 1.5rem;
+  background-color: rgb(219, 136, 118);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  translate: 0 60%;
+  transition: translate 0.2s ease-out;
+}
+.hoverable-container .likes-pricing span {
+  font-size: 24px;
+  font-weight: 500;
+}
+.hoverable-container:hover .likes-pricing {
+  translate: 0 0%;
+}
+
+.media-likes-container button.liked .heart-empty {
+  display: none !important;
+}
+.media-likes-container button.liked .heart-full {
+  display: unset !important;
+}
+.media-likes-container button .heart-full {
+  display: none !important;
 }
 
 header.main-header {

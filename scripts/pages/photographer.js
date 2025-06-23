@@ -33,8 +33,9 @@ const getPhotos = async () => {
   }
 };
 const displayProfilData = (photographer) => {
-  const { name, city, country, tagline, portrait } = photographer;
+  const { name, city, country, tagline, portrait, price } = photographer;
 
+  const princing = document.querySelector(".pricing");
   const profileLoader = document.querySelector(".profile-loader");
   const photographerContainer = document.querySelector(".photograph-header");
   const nameBox = document.querySelectorAll(".photograph-header__name");
@@ -52,6 +53,7 @@ const displayProfilData = (photographer) => {
   pictureBox.alt = name;
   profileLoader.classList.add("none");
   photographerContainer.classList.remove("none");
+  princing.innerText = `${price}€/jour`;
 };
 
 const createMediaCard = (media) => {
@@ -72,17 +74,38 @@ const createMediaCard = (media) => {
     mediaElement.setAttribute("controls", "true");
     mediaElement.setAttribute("data-id", media.id);
   }
+  mediaElement.setAttribute("tabindex", 0);
+
   const div = document.createElement("div");
   const titleBox = document.createElement("span");
   const likesBox = document.createElement("span");
-  const likesIcon = document.createElement("img");
+  const likes = document.createElement("span");
+  const likesIconBtn = document.createElement("button");
+  const likesIconEmpty = document.createElement("img");
+  const likesIconFull = document.createElement("img");
 
   titleBox.innerText = media.title;
-  likesBox.innerText = media.likes;
-  likesIcon.src = "../../assets/icons/heart.svg";
-  likesIcon.alt = "icône coeur";
+  likes.innerText = media.likes;
 
-  likesBox.appendChild(likesIcon);
+  likesIconEmpty.src = "../../assets/icons/empty-heart.svg";
+  likesIconEmpty.alt = "icône coeur vide";
+  likesIconEmpty.setAttribute("class", "event-none heart-empty");
+
+  likesIconFull.src = "../../assets/icons/heart.svg";
+  likesIconFull.alt = "icône coeur rempli";
+  likesIconFull.setAttribute("class", "event-none heart-full");
+
+  likesIconBtn.setAttribute("tabindex", 0);
+  likesIconBtn.setAttribute("class", "icon-btn");
+  likesIconBtn.setAttribute("data-id", media.id);
+
+  likesIconBtn.appendChild(likesIconEmpty);
+  likesIconBtn.appendChild(likesIconFull);
+
+  likesBox.setAttribute("class", "media-likes-container");
+  likesBox.appendChild(likes);
+  likesBox.appendChild(likesIconBtn);
+
   div.appendChild(titleBox);
   div.appendChild(likesBox);
 
@@ -103,6 +126,10 @@ const displayMedias = (medias) => {
       document.querySelector(".loader").classList.add("none");
     }
   });
+
+  const totalLikesElement = document.querySelector(".total-likes");
+  const totalLikes = medias.reduce((sum, item) => sum + item.likes, 0);
+  totalLikesElement.innerText = totalLikes.toLocaleString();
 };
 
 const init = async () => {

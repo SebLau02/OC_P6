@@ -2,11 +2,12 @@
 
 #card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   flex-wrap: wrap;
   margin-left: 100px;
   margin-right: 100px;
+  gap: 95px;
 
   article {
     max-width: 350px;

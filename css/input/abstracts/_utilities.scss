@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-@for $i from 1 through 10 {
+@for $i from 0 through 10 {
   .m-#{$i} {
     margin: #{$i}rem;
   }
@@ -86,6 +86,15 @@ $align: (pointer, none);
 @each $val in $align {
   .#{$val} {
     cursor: $val;
+  }
+}
+
+$pointerEvent: (
+  event-none: none,
+);
+@each $key, $val in $pointerEvent {
+  .#{$key} {
+    pointer-events: $val;
   }
 }
 

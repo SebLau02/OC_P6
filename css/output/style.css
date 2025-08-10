@@ -1104,7 +1104,7 @@ html.hidden {
   font-size: 24px;
   font-weight: 500;
 }
-.hoverable-container:hover .likes-pricing {
+.hoverable-container:hover .likes-pricing, .hoverable-container:focus .likes-pricing {
   translate: 0 0%;
 }
 

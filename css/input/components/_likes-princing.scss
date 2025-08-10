@@ -18,7 +18,8 @@
       font-weight: 500;
     }
   }
-  &:hover {
+  &:hover,
+  &:focus {
     .likes-pricing {
       translate: 0 0%;
     }

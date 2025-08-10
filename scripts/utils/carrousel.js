@@ -98,4 +98,20 @@ export const carrouselActions = (medias) => {
     });
     likeBtn.addEventListener("click", (e) => handleLike(e));
   });
+
+  document.addEventListener("keydown", (e) => {
+    const modalContainer = document.getElementById("modal-container");
+
+    if (!modalContainer.classList.contains("active")) return;
+
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      console.log("");
+      handleNextImage(medias);
+    }
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      handlePrevImage(medias);
+    }
+  });
 };

@@ -54,8 +54,9 @@ const handleSelectOption = (e, activeOption) => {
   const activeOptionLabel = activeOption.querySelector("span");
   activeOptionLabel.innerText = label;
 
+  const focusables = e.target.parentNode.children;
   // mettre l'arrtibut de l'option précédement active en sur false
-  Array.from(e.target.parentNode.children).find((o) => {
+  Array.from(focusables).find((o) => {
     if (o.dataset.selected === "true") {
       o.dataset.selected = false;
       o.setAttribute("aria-selected", "false");
@@ -63,6 +64,15 @@ const handleSelectOption = (e, activeOption) => {
   });
   e.target.dataset.selected = true;
   e.target.setAttribute("aria-selected", "true");
+
+  // poser le focus sur la première option l'option sélectionné est la dernière
+  const seletectedOptionIndex = Array.from(focusables).findIndex(
+    (o) => o.getAttribute("aria-selected") === "true"
+  );
+
+  if (focusables.length - 1 === seletectedOptionIndex) {
+    focusables[0].focus();
+  }
 
   const optionsContainer = activeOption.nextElementSibling;
   optionsContainer.setAttribute("aria-activedescendant", e.target.id);
@@ -77,7 +87,7 @@ let closeHandler;
  * @param {Event} e
  * @param {HTMLElement} activeOption
  */
-const handleOpenSelect = (e, activeOption) => {
+const handleOpenSelect = (e, activeOption, selectContext) => {
   e.stopPropagation();
   const optionsContainer = selectContext.querySelector(".options"); // conteneur des options
   optionsContainer.classList.toggle("open"); // toggle les options
@@ -92,54 +102,72 @@ const handleOpenSelect = (e, activeOption) => {
   html.addEventListener("click", closeHandler);
 };
 
-const selectContext = document.querySelector(".custom-select-context");
-const activeOption = selectContext.querySelector(".active-option");
-const focusableSelectors =
-  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-const focusable = selectContext.querySelectorAll(focusableSelectors);
-const first = focusable[0];
-const last = focusable[focusable.length - 1];
+export const handleInitSelect = () => {
+  const selectContext = document.querySelector(".custom-select-context");
+  const activeOption = selectContext.querySelector(".active-option");
+  const focusableSelectors =
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  const focusable = selectContext.querySelectorAll(focusableSelectors);
 
-const handleFocusTrap = (e) => {
-  if (e.key !== "Tab") return;
+  const handleFocusTrap = (e) => {
+    if (e.key !== "Tab") return; // Ignore si ce n'est pas la touche Tab
 
-  if (e.shiftKey) {
-    if (document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
+    const filteredFocusablle = Array.from(focusable).filter(
+      (f) => f.getAttribute("aria-selected") !== "true"
+    );
+
+    const first = filteredFocusablle[0];
+    const last = filteredFocusablle[filteredFocusablle.length - 1];
+
+    if (e.shiftKey) {
+      // Si on appuie sur Shift + Tab (navigation arrière)
+      if (document.activeElement === first) {
+        // Si on est sur le premier élément focusable
+        e.preventDefault(); // Empêche le focus de sortir du conteneur
+        last.focus(); // Ramène le focus sur le dernier élément (boucle)
+      }
+    } else {
+      // Si on appuie juste sur Tab (navigation avant)
+      if (document.activeElement === last) {
+        // Si on est sur le dernier élément focusable
+        e.preventDefault(); // Empêche le focus de sortir du conteneur
+        first.focus(); // Ramène le focus sur le premier élément (boucle)
+      }
     }
-  } else {
-    if (document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
+  };
+
+  if (selectContext) {
+    selectContext.addEventListener("keydown", (e) => handleFocusTrap(e));
+    const selectLabel = selectContext.querySelector("label");
+
+    selectLabel.addEventListener("click", (e) =>
+      handleOpenSelect(e, activeOption, selectContext)
+    );
+    selectLabel.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ")
+        handleOpenSelect(e, activeOption, selectContext);
+    });
+    activeOption.addEventListener("click", (e) =>
+      handleOpenSelect(e, activeOption, selectContext)
+    );
+    activeOption.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleOpenSelect(e, activeOption, selectContext);
+      }
+    });
+
+    const options = selectContext.querySelectorAll(".option");
+    options.forEach((option) => {
+      option.addEventListener("click", (e) =>
+        handleSelectOption(e, activeOption)
+      );
+      option.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleSelectOption(e, activeOption);
+        }
+      });
+    });
   }
 };
-
-if (selectContext) {
-  selectContext.addEventListener("keydown", (e) => handleFocusTrap(e));
-  const selectLabel = selectContext.querySelector("label");
-
-  selectLabel.addEventListener("click", (e) =>
-    handleOpenSelect(e, activeOption)
-  );
-  selectLabel.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") handleOpenSelect(e, activeOption);
-  });
-  activeOption.addEventListener("click", (e) =>
-    handleOpenSelect(e, activeOption)
-  );
-  activeOption.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") handleOpenSelect(e, activeOption);
-  });
-
-  const options = selectContext.querySelectorAll(".option");
-  options.forEach((option) => {
-    option.addEventListener("click", (e) =>
-      handleSelectOption(e, activeOption)
-    );
-    option.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") handleSelectOption(e, activeOption);
-    });
-  });
-}

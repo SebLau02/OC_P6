@@ -1,4 +1,4 @@
-function displayModal(type) {
+export function displayModal(type) {
   const modalContainer = document.getElementById("modal-container");
   const html = document.querySelector("html");
 
@@ -14,7 +14,7 @@ function displayModal(type) {
   dialog.focus();
 }
 
-function closeModal() {
+export function closeModal() {
   const modal = document.getElementById("modal-container");
   const html = document.querySelector("html");
   const formContainer = modal.querySelector(".contact-container");
@@ -38,9 +38,15 @@ const handleSubmitContact = (e) => {
   const form = e.currentTarget;
   const formData = new FormData(form);
 
+  // affiche temporairement les valeurs entrée dans la console
+  for (const [key, value] of formData.entries()) {
+    console.log(key, value);
+  }
+
   const submitBtn = form.querySelector(".contact_button");
 
   submitBtn.classList.add("loading");
+  // simule un envoi de donnée
   timeout = setTimeout(() => {
     submitBtn.classList.remove("loading");
     form.reset();

@@ -926,6 +926,7 @@ html.hidden {
 }
 .custom-select-context .custom-select {
   position: relative;
+  z-index: 1;
 }
 .custom-select-context .custom-select .options {
   position: absolute;

@@ -25,7 +25,7 @@
           <h2 class="photograph-header__localisation"></h2>
           <h2 class="photograph-header__tag"></h2>
         </div>
-        <button class="contact_button" onclick="displayModal('contact')">
+        <button class="contact_button" id="contact-btn" data-target="contact">
           Contactez-moi
         </button>
         <div class="photograph-header__container">
@@ -119,9 +119,8 @@
           </h1>
           <button
             type="button"
-            onclick="closeModal()"
             aria-label="Fermer la modale"
-            class="pointer"
+            class="pointer close-modal-btn"
           >
             <img src="assets/icons/close.svg" alt="icône croix" />
           </button>
@@ -179,8 +178,7 @@
             />
           </button>
           <button
-            class="icon-btn close-carrousel-btn m-b-auto pointer"
-            onclick="closeModal()"
+            class="icon-btn close-carrousel-btn m-b-auto pointer close-modal-btn"
             aria-label="fermer le carrousel"
           >
             <img
@@ -191,9 +189,30 @@
         </div>
       </div>
     </div>
-    <script src="/scripts/pages/photographer.js" loading="lazy"></script>
-    <script src="/scripts/utils/select.js" loading="lazy"></script>
-    <script src="/scripts/utils/contactForm.js" loading="lazy"></script>
-    <script src="/scripts/utils/carrousel.js" loading="lazy"></script>
+    <!-- <script
+      type="module"
+      src="/scripts/utils/select.js"
+      loading="lazy"
+    ></script>
+    <script
+      type="module"
+      src="/scripts/utils/contactForm.js"
+      loading="lazy"
+    ></script>
+    <script
+      type="module"
+      src="/scripts/utils/videoThumbnail.js"
+      loading="lazy"
+    ></script>
+    <script
+      type="module"
+      src="/scripts/utils/carrousel.js"
+      loading="lazy"
+    ></script> -->
+    <script
+      type="module"
+      src="/scripts/pages/photographer.js"
+      loading="lazy"
+    ></script>
   </body>
 </html>

@@ -1,5 +1,13 @@
+import { carrouselActions } from "../utils/carrousel.js";
+import { displayModal, closeModal } from "../utils/contactForm.js";
+import { handleInitSelect } from "../utils/select.js";
+
 const cardContainer = document.querySelector("#card-container");
 
+/**
+ * Fetch les données d'un photographe
+ * @returns Objet contenant les informations personnels du photographe
+ */
 const getPhotographer = async () => {
   try {
     const res = await fetch("data/photographers.json");
@@ -12,6 +20,10 @@ const getPhotographer = async () => {
     return error;
   }
 };
+/**
+ * Fetch les médias du photographe
+ * @returns Tableau de photo ; chaque photo est un objet contenant l'url, le nom, l'id du photographe
+ */
 const getPhotos = async () => {
   try {
     const res = await fetch("data/medias.json");
@@ -32,6 +44,11 @@ const getPhotos = async () => {
     return error;
   }
 };
+
+/**
+ * Insérer dynamiquement les données photographe dans le html
+ * @param {Object} photographer
+ */
 const displayProfilData = (photographer) => {
   const { name, city, country, tagline, portrait, price } = photographer;
 
@@ -56,9 +73,16 @@ const displayProfilData = (photographer) => {
   princing.innerText = `${price}€/jour`;
 };
 
+/**
+ * Crée dynamiquement une carte pour le média fourni puis l'insère dans le html
+ * @param {Object} media
+ */
 const createMediaCard = (media) => {
+  // crée la carte
   const article = document.createElement("article");
   let mediaElement = "";
+
+  // en fonction de la nature du média on crée une balise image ou vidéo
   if ("image" in media) {
     mediaElement = document.createElement("img");
     mediaElement.src = `../../assets/medias/${media.image}`;
@@ -69,13 +93,16 @@ const createMediaCard = (media) => {
     const source = document.createElement("source");
     source.src = `../../assets/medias/${media.video}`;
     source.type = "video/mp4";
+    // génère la miniature pour la vidéo
+    // generateThumbnail()
     mediaElement = document.createElement("video");
     mediaElement.appendChild(source);
     mediaElement.setAttribute("controls", "true");
     mediaElement.setAttribute("data-id", media.id);
   }
-  mediaElement.setAttribute("tabindex", 0);
+  mediaElement.setAttribute("tabindex", 0); // permet d'être focusable au clavier
 
+  // création et structuration de la carte puis l'insère dans le html
   const div = document.createElement("div");
   const titleBox = document.createElement("span");
   const likesBox = document.createElement("span");
@@ -119,6 +146,11 @@ const createMediaCard = (media) => {
   cardContainer.appendChild(article);
 };
 
+/**
+ * Itère sur le tableau medias et crée dynamiquement les médias
+ * Affiche un loader pendant le montage des médias
+ * @param {Array} medias
+ */
 const displayMedias = (medias) => {
   medias.forEach((media, i) => {
     createMediaCard(media);
@@ -132,12 +164,53 @@ const displayMedias = (medias) => {
   totalLikesElement.innerText = totalLikes.toLocaleString();
 };
 
+/**
+ * Initialise l'action d'ouverture du bouton du formulaire de contact
+ * @returns void
+ */
+const contactBtn = () => {
+  const contactBtn = document.querySelector("#contact-btn");
+
+  if (!contactBtn) return;
+
+  // pas de remove listener ici car le bouton est initializé qu'un fois (au montage de l'app), donc aucun risque de fuite de mémoire
+  contactBtn.addEventListener("click", () => displayModal("contact"));
+};
+
+/**
+ * Initialise l'action de fermeture des boutons de la modale
+ * @returns void
+ */
+const handleCloseModalBtn = () => {
+  const closeBtns = document.querySelectorAll(".close-modal-btn");
+
+  if (!closeBtns) return;
+
+  // pas de remove listener ici car les boutons sont initializé qu'un fois (au montage de l'app), donc aucun risque de fuite de mémoire
+  closeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => closeModal("contact"));
+  });
+};
+
+/**
+ * Au montage de la page on:
+ * - récupère les données du photographe
+ * - récupères ses photos
+ * - affiche ses données profil
+ * - affiche ses photos
+ * - initialise les actions du carrousel
+ * - initialise l'action de fermeture de la modale
+ * - initialise l'ouverture du formulaire de contact
+ */
 const init = async () => {
   const { photographer } = await getPhotographer();
   const { medias } = await getPhotos();
   displayProfilData(photographer);
   displayMedias(medias);
   carrouselActions(medias);
+  handleCloseModalBtn();
+  contactBtn();
+  handleInitSelect();
 };
 
 init();

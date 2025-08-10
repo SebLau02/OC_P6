@@ -1,3 +1,5 @@
+import { displayModal } from "../utils/contactForm.js";
+
 const carrousel = document.querySelector("#carrousel");
 const currentImage = carrousel.querySelector(".image-container img");
 const currentVideo = carrousel.querySelector(".image-container video");
@@ -81,7 +83,7 @@ const handleLike = (e) => {
   }
 };
 
-const carrouselActions = (medias) => {
+export const carrouselActions = (medias) => {
   const mediasElement = document.querySelectorAll(".media");
 
   mediasElement.forEach((media) => {

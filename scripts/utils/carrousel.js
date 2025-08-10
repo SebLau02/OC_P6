@@ -87,7 +87,7 @@ export const carrouselActions = (medias) => {
   const mediasElement = document.querySelectorAll(".media");
 
   mediasElement.forEach((media) => {
-    const mediasImage = media.querySelector("img");
+    const mediasImage = media.querySelector(":scope > [data-id]");
     const likeBtn = media.querySelector(".icon-btn");
 
     mediasImage.addEventListener("click", (e) =>

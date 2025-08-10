@@ -1012,7 +1012,8 @@ html.hidden {
   width: 100%;
   margin-bottom: 2rem;
 }
-#card-container article img {
+#card-container article img,
+#card-container article canvas {
   object-fit: cover;
   width: 100%;
   height: 300px;
@@ -1022,6 +1023,7 @@ html.hidden {
   width: 100%;
   height: 300px;
   border-radius: 5px;
+  display: none;
 }
 #card-container article > div {
   display: flex;

@@ -88,19 +88,38 @@ const createMediaCard = (media) => {
     mediaElement.src = `../../assets/medias/${media.image}`;
     mediaElement.alt = "";
     mediaElement.setAttribute("data-id", media.id);
+    mediaElement.setAttribute("tabindex", 0); // permet d'être focusable au clavier
+    article.appendChild(mediaElement);
   }
   if ("video" in media) {
     const source = document.createElement("source");
     source.src = `../../assets/medias/${media.video}`;
     source.type = "video/mp4";
-    // génère la miniature pour la vidéo
-    // generateThumbnail()
     mediaElement = document.createElement("video");
     mediaElement.appendChild(source);
-    mediaElement.setAttribute("controls", "true");
-    mediaElement.setAttribute("data-id", media.id);
+    // mediaElement.setAttribute("controls", "true");
+    // mediaElement.setAttribute("data-id", media.id);
+
+    // génère la miniature pour la vidéo
+    const canvas = document.createElement("canvas");
+    article.appendChild(canvas);
+
+    const ctx = canvas.getContext("2d");
+
+    mediaElement.addEventListener("loadeddata", () => {
+      mediaElement.currentTime = 1;
+    });
+
+    mediaElement.addEventListener("seeked", () => {
+      canvas.width = mediaElement.videoWidth;
+      canvas.height = mediaElement.videoHeight;
+      ctx.drawImage(mediaElement, 0, 0, canvas.width, canvas.height);
+    });
+
+    canvas.setAttribute("data-id", media.id);
+    canvas.setAttribute("tabindex", 0); // permet d'être focusable au clavier
+    canvas.setAttribute("tabindex", 0); // permet d'être focusable au clavier
   }
-  mediaElement.setAttribute("tabindex", 0); // permet d'être focusable au clavier
 
   // création et structuration de la carte puis l'insère dans le html
   const div = document.createElement("div");
@@ -136,7 +155,6 @@ const createMediaCard = (media) => {
   div.appendChild(titleBox);
   div.appendChild(likesBox);
 
-  article.appendChild(mediaElement);
   article.appendChild(div);
   article.setAttribute("class", "media");
   article.setAttribute("data-date", media.date);

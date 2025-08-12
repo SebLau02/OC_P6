@@ -37,6 +37,11 @@
       font-size: 24px;
       color: $dark;
 
+      h3 {
+        font-size: inherit;
+        font-weight: 400;
+      }
+
       :last-child {
         display: flex;
         justify-content: center;

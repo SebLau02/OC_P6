@@ -124,7 +124,7 @@ const createMediaCard = (media) => {
 
   // création et structuration de la carte puis l'insère dans le html
   const div = document.createElement("div");
-  const titleBox = document.createElement("span");
+  const titleBox = document.createElement("h3");
   const likesBox = document.createElement("span");
   const likes = document.createElement("span");
   const likesIconBtn = document.createElement("button");

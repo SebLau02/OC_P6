@@ -1033,6 +1033,10 @@ html.hidden {
   font-size: 24px;
   color: rgb(144, 28, 28);
 }
+#card-container article > div h3 {
+  font-size: inherit;
+  font-weight: 400;
+}
 #card-container article > div :last-child {
   display: flex;
   justify-content: center;

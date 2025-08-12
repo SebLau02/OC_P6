@@ -80,6 +80,7 @@ const handleLike = (e) => {
     totalLikes.innerText = parseInt(totalLikes.textContent) + 1;
   } else {
     likesCount.innerText = parseInt(likesCount.textContent) - 1;
+    totalLikes.innerText = parseInt(totalLikes.textContent) - 1;
   }
 };
 
@@ -94,7 +95,10 @@ export const carrouselActions = (medias) => {
       handleOpenCarrousel(e, medias)
     );
     mediasImage.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") handleOpenCarrousel(e, medias);
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleOpenCarrousel(e, medias);
+      }
     });
     likeBtn.addEventListener("click", (e) => handleLike(e));
   });
@@ -106,7 +110,6 @@ export const carrouselActions = (medias) => {
 
     if (e.key === "ArrowRight") {
       e.preventDefault();
-      console.log("");
       handleNextImage(medias);
     }
     if (e.key === "ArrowLeft") {

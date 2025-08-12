@@ -138,7 +138,7 @@ export const handleInitSelect = () => {
 
   if (selectContext) {
     selectContext.addEventListener("keydown", (e) => handleFocusTrap(e));
-    const selectLabel = selectContext.querySelector("label");
+    const selectLabel = selectContext.querySelector("span#select-label");
 
     selectLabel.addEventListener("click", (e) =>
       handleOpenSelect(e, activeOption, selectContext)

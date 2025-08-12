@@ -28,7 +28,18 @@ export function closeModal() {
   carrousel.classList.add("none");
 }
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModal();
+  if (e.key === "Escape") {
+    const currentImage = document.querySelector(".image-container [data-id]");
+    const currentImageId = currentImage.getAttribute("data-id");
+    const medias = document.querySelectorAll(".media__img");
+    const galleryCurrentImage = Array.from(medias).find(
+      (el) => String(el.getAttribute("data-id")) === String(currentImageId)
+    );
+    closeModal();
+    if (galleryCurrentImage) {
+      galleryCurrentImage.focus();
+    }
+  }
 });
 let timeout = null;
 const handleSubmitContact = (e) => {

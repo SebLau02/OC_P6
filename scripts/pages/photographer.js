@@ -89,6 +89,7 @@ const createMediaCard = (media) => {
     mediaElement.alt = "";
     mediaElement.setAttribute("data-id", media.id);
     mediaElement.setAttribute("tabindex", 0); // permet d'être focusable au clavier
+    mediaElement.setAttribute("class", "media__img"); // utile pour récupérer les éléments plustard
     article.appendChild(mediaElement);
   }
   if ("video" in media) {
@@ -97,11 +98,11 @@ const createMediaCard = (media) => {
     source.type = "video/mp4";
     mediaElement = document.createElement("video");
     mediaElement.appendChild(source);
-    // mediaElement.setAttribute("controls", "true");
-    // mediaElement.setAttribute("data-id", media.id);
 
     // génère la miniature pour la vidéo
     const canvas = document.createElement("canvas");
+    canvas.setAttribute("data-id", media.id);
+    canvas.setAttribute("class", "media__img"); // utile pour récupérer les éléments plustard
     article.appendChild(canvas);
 
     const ctx = canvas.getContext("2d");

@@ -10,7 +10,6 @@ const currentImageCaption = carrousel.querySelector(
 const setMedia = (media) => {
   if ("video" in media) {
     currentVideo.src = `../../assets/medias/${media.video}`;
-    currentVideo.alt = `${media.title}`;
     currentVideo.setAttribute("data-id", media.id);
     currentImageCaption.innerText = media.title;
     currentImage.removeAttribute("data-id");

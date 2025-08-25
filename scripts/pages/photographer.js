@@ -86,7 +86,7 @@ const createMediaCard = (media) => {
   if ("image" in media) {
     mediaElement = document.createElement("img");
     mediaElement.src = `../../assets/medias/${media.image}`;
-    mediaElement.alt = "";
+    mediaElement.alt = `photo de ${media.title}`;
     mediaElement.setAttribute("data-id", media.id);
     mediaElement.setAttribute("tabindex", 0); // permet d'être focusable au clavier
     mediaElement.setAttribute("class", "media__img"); // utile pour récupérer les éléments plustard

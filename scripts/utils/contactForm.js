@@ -29,13 +29,18 @@ export function closeModal() {
 }
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
+    const activeModalPart = document.querySelector(
+      "#modal-container > div:not(.none)"
+    );
+    closeModal();
+    if (activeModalPart.classList.contains("contact-container")) return;
+
     const currentImage = document.querySelector(".image-container [data-id]");
     const currentImageId = currentImage.getAttribute("data-id");
     const medias = document.querySelectorAll(".media__img");
     const galleryCurrentImage = Array.from(medias).find(
       (el) => String(el.getAttribute("data-id")) === String(currentImageId)
     );
-    closeModal();
     if (galleryCurrentImage) {
       galleryCurrentImage.focus();
     }

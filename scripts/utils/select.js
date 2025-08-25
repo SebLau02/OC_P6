@@ -137,7 +137,19 @@ export const handleInitSelect = () => {
   };
 
   if (selectContext) {
-    selectContext.addEventListener("keydown", (e) => handleFocusTrap(e));
+    selectContext.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        selectContext.querySelector(".options").classList.contains("open")
+      ) {
+        e.stopPropagation();
+        handleCloseSelect(
+          selectContext.querySelector(".options"),
+          activeOption
+        );
+      }
+      handleFocusTrap(e);
+    });
     const selectLabel = selectContext.querySelector("span#select-label");
 
     selectLabel.addEventListener("click", (e) =>

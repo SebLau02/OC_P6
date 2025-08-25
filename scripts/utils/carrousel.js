@@ -70,6 +70,13 @@ const handleOpenCarrousel = (e, medias) => {
 
 const handleLike = (e) => {
   e.target.classList.toggle("liked");
+  if (e.target.classList.contains("liked")) {
+    e.currentTarget.setAttribute("aria-pressed", "true");
+    e.currentTarget.setAttribute("aria-label", "Retirer des favoris");
+  } else {
+    e.currentTarget.setAttribute("aria-pressed", "false");
+    e.currentTarget.setAttribute("aria-label", "Ajouter aux favoris");
+  }
 
   const likesCount = e.currentTarget.parentNode.querySelector("span");
   const totalLikes = document.querySelector(".total-likes");

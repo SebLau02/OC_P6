@@ -32,6 +32,7 @@ document.addEventListener("keydown", (e) => {
     const activeModalPart = document.querySelector(
       "#modal-container > div:not(.none)"
     );
+    if (!activeModalPart) return;
     closeModal();
     if (activeModalPart.classList.contains("contact-container")) return;
 

@@ -135,16 +135,18 @@ const createMediaCard = (media) => {
   likes.innerText = media.likes;
 
   likesIconEmpty.src = "../../assets/icons/empty-heart.svg";
-  likesIconEmpty.alt = "icône coeur vide";
+  likesIconEmpty.alt = "";
   likesIconEmpty.setAttribute("class", "event-none heart-empty");
 
   likesIconFull.src = "../../assets/icons/heart.svg";
-  likesIconFull.alt = "icône coeur rempli";
+  likesIconFull.alt = "";
   likesIconFull.setAttribute("class", "event-none heart-full");
 
   likesIconBtn.setAttribute("tabindex", 0);
   likesIconBtn.setAttribute("class", "icon-btn");
   likesIconBtn.setAttribute("data-id", media.id);
+  likesIconBtn.setAttribute("aria-label", "Ajouter aux favoris");
+  likesIconBtn.setAttribute("aria-pressed", "false");
 
   likesIconBtn.appendChild(likesIconEmpty);
   likesIconBtn.appendChild(likesIconFull);
